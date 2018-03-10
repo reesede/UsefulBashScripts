@@ -1,6 +1,7 @@
 #! /bin/bash
 
 debug=0
+enableCmd=/usr/sbin/cupsenable
 
 if [ $# -ne 1 ]
 then
@@ -22,7 +23,7 @@ if [ $debug -ne 0 ]
 then
   echo "found $1 not ready...attempting to enable."
 fi
-cupsenable $1
+$enableCmd $1
 
 lpqResult=`lpq $1 | grep "is ready" | wc -l`
 if [ $lpqResult -eq 1 ]
